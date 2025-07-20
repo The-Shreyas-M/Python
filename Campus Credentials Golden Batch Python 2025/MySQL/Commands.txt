@@ -1,0 +1,87 @@
+show databases;
+create database APSIT;
+use apsit;
+show tables;
+
+Functions:
+
+ABS()
+select abs(-44);
+select abs(-44) from dual;
+
+POWER(X,Y)
+X^Y
+
+select SQRT(16);
+
+select exp(4) from dual;
+select exp(4) as e_to_2s_power from dual;
+
+select greatest(3, 12, 4253, 5, 3, -10000000000) from dual;
+select least(3, 12, 4253, 5, 3, -10000000000) from dual;
+
+select round(4.4) from dual;
+
+select floor(4.4) from dual;
+
+select truncate(4.444, 2) from dual;
+
+select mod(10, 3);
+
+select lower("Halla Balla") from dual;
+select upper("Halla Balla") from dual;
+
+select substring("aalla aaaBalla", 1, 7) from dual;
+
+select trim("123aalla aaaBalla", "123") from dual;
+
+select ltrim("      aalla aaaBalla") from dual;
+
+select lpad('Help4Code', '15', '_');
+
+select concat('Help4code' , 'Elearning');
+
+desc persons;
+
+select * from persons;
+
+insert into persons(pid, personsName, personsSalary, City)values(105, 'Mahesh Dalle', 69342500, "Pune");
+
+select personsName,pid from persons;
+
+select pid, personsName from persons where pid=101;
+
+select * from persons where pid=101;
+
+select distinct City from persons;
+
+select * from persons where personsSalary>100000;
+select * from persons where personsSalary<100000;
+select * from persons where personsSalary<>100000; # not equal
+
+select * from persons where city="Thane" and personsSalary>100000;
+select * from persons where personsSalary between 100000 and 100000000;
+
+operators:
+
+all
+any
+between
+in
+
+select * from persons where personsName like "%lla";
+select * from persons where personsName not like "%lla";
+
+select count(City="Thane") from persons;
+select count(City) from persons where City="Thane";
+
+select city, sum(personsSalary) as "Total Salary" from persons group by city;
+select sum(personsSalary) from persons where personsSalary>=100000;
+select sum(personsSalary) from persons;
+
+select city, avg(personsSalary) as "Avg Salary" from persons group by city;
+
+select city, min(personsSalary) as "Min Salary" from persons group by city;
+
+Update persons set personsName="Nalla" where city="nagpur";
+Update persons set city="Nagpur" where pid=101;

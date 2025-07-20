@@ -1,0 +1,119 @@
+Step 1: Requirements Gathering and Planning
+
+1. Core Functionalities:
+    - Account Creation (For Individual or business)
+    - Deposit and Withdrawal Transactions
+    - Balance Enquiry
+    - Transaction history for each Account
+    - Interest calculation (for saving account)
+    - Overdraft limit (for business accounts)
+    - Simple admin and customer access
+
+2. Class Diagram Outline:
+    - Base Classes: Person, Account
+    - Derived Classes: Customer, Admin, SavingsAccount, BusinessAccount
+    - Transaction, Bank
+
+
+3. Define Classes and Methods
+Person
+Attributes:
+    - name (str): Name of Person
+    - address (str): Address of the Person
+    - phone (str): Contact number
+
+Methods:
+    __init__(): Constructor to initialize the Person
+
+details
+    get_details(): Returns the person's details
+
+
+5. Customer (Inherits from Person)
+
+Attributes:
+    - accounts (list of account objects): All accounts linked to the Customer
+
+Methods:
+    - add_account(account): Adds a new account to the customer's account list
+    - remove_account(account_number): Removes an account from the Customer's list
+    - get_accounts_summary(): Displays summary of all accounts
+
+
+6. Admin (Inherits from Person)
+
+Attributes:
+    - employee_id (str): Unique identifier for the admin
+
+Methods:
+    - approve_account(customer, account): Approves and activates a new account
+
+New Account:
+    - view_all_customers(): Provides a summary of all Bank customers
+
+
+
+
+
+
+4. Account (Abstract)
+
+Attributes:
+    - account_number (str): Unique identifier for the account
+    - balance (float): Current balance of the account
+    - owner (Customer object): Owner of the account
+
+Methods:
+    - deposit(amount): Adds funds to the account
+    - Withdraw(amount): Deducts funds, ensuring no Overdrafts occur
+
+In General:
+    - get_balance(): Returns the Current balance
+    - show_account_details(): Displays account details
+
+
+
+7. SavingsAccount (Inherits from Account)
+
+Attributes:
+    - interest_rate (float): Interest rate for the savings account
+
+Methods:
+    - apply_interest(): calculates and applies interest to the account balance periodically
+
+8. BusinessAccount (Inherits from Account)
+
+Attributes:
+    - overdraft_limit (float): limit for Overdrafts
+
+Methods:
+    - override_withdraw(amount): Allows Withdrawal within he overdraft limit
+
+
+
+
+9. Transaction
+
+Attributes:
+    - transaction_id (str): Unique identifier for the Transaction
+    - transaction_type (str): Type of transaction ("Deposit" or "Withdrawal")
+    - amount (float): Amount transacted
+    - date (datetime): Date of the transaction
+
+Methods:
+    - get_transaction_details(): Returns the transaction details
+
+
+10. Bank
+
+Attributes:
+    - customers (list of all customer objects): All bank customers
+    - admins (list of Admin object): All bank admin
+
+Methods:
+    - create_customer_account(): Initiates a new account creation for a customer
+
+customer
+    - delete_customer_account(): Deletes a customer's account
+    - view_transaction_history(account_number): Returns all Transactions for a given account
+    - find_customer_by_account(account_number): Finds and Returns the customer associated with an account
